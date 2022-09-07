@@ -5,6 +5,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,8 +20,20 @@ class RestaurantTest {
     public void restaurant_data() {
         restaurant.addToMenu("Sweet corn soup", 119);
         restaurant.addToMenu("Vegetable lasagne", 269);
-        restaurant.addToMenu("Sizzling brownie", 319);
     }
+
+    // >>>>>>>>>>>>>>>>>>>>>>>>>ORDER<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void order_value_should_return_388_if_price_of_only_two_items_in_order_are_119_and_269() {
+        ArrayList<String> orderList = new ArrayList<>();
+        orderList.add("Sweet corn soup");
+        orderList.add("Vegetable lasagne");
+        int orderValue = restaurant.getOrderValue(orderList);
+        assertEquals(388, orderValue);
+        ;
+    }
+
+    // <<<<<<<<<<<<<<<<<<<<<<<<<ORDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     // >>>>>>>>>>>>>>>>>>>>>>>>>OPEN/CLOSED<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
